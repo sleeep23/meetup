@@ -7,7 +7,7 @@
   ],
   "scripts": {
     "dev": "yarn workspace @meetup/web dev",
-    "build": "yarn workspace @meetup/web build",
+    "build": "yarn workspace @meetup/shared build && yarn workspace @meetup/web build",
     "lint": "eslint . --ext .ts,.tsx",
     "format": "prettier --write \"**/*.{ts,tsx,json,css,md}\""
   },
