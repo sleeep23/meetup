@@ -33,7 +33,7 @@ app.get(
   '/',
   apiReference({
     theme: 'default',
-    spec: { url: '/openapi.json' },
+    spec: { url: '/api/openapi.json' },
   }),
 )
 
