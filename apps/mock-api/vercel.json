@@ -1,6 +1,6 @@
 {
-  "buildCommand": "cd ../.. && yarn workspace @meetup/shared build && yarn workspace @meetup/mock-api build",
-  "installCommand": "cd ../.. && yarn install",
+  "buildCommand": "yarn workspace @meetup/mock-api build",
+  "installCommand": "yarn install",
   "outputDirectory": "public",
   "rewrites": [
     { "source": "/(.*)", "destination": "/api/index" }
