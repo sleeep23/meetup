@@ -1,7 +1,6 @@
 {
   "buildCommand": "cd ../.. && yarn workspace @meetup/shared build",
   "installCommand": "cd ../.. && yarn install",
-  "outputDirectory": ".",
   "rewrites": [
     { "source": "/(.*)", "destination": "/api/index" }
   ]
