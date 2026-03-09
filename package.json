@@ -8,6 +8,7 @@
   "scripts": {
     "dev": "yarn workspace @meetup/web dev",
     "dev:mock": "yarn workspace @meetup/mock-api dev",
+    "build:mock": "yarn workspace @meetup/mock-api build",
     "build:shared": "yarn workspace @meetup/shared build",
     "build:web": "yarn workspace @meetup/web build",
     "build": "yarn build:shared && yarn build:web",
