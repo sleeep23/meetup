@@ -3,6 +3,6 @@
   "installCommand": "cd ../.. && yarn install",
   "outputDirectory": ".",
   "rewrites": [
-    { "source": "/(.*)", "destination": "/api/[[...route]]" }
+    { "source": "/(.*)", "destination": "/api/index" }
   ]
 }
