@@ -3,11 +3,7 @@
   "compilerOptions": {
     "rootDir": "src",
     "outDir": "./dist",
-    "noEmit": false,
-    "paths": {
-      "@meetup/shared": ["../../packages/shared/src"],
-      "@meetup/shared/*": ["../../packages/shared/src/*"]
-    }
+    "noEmit": false
   },
   "include": ["src/**/*"],
   "exclude": ["api/**/*", "dist", "node_modules"]

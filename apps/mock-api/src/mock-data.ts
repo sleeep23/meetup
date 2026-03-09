@@ -1,4 +1,26 @@
-import type { Profile, MeetupRow, ApplicationRow } from '@meetup/shared'
+export interface Profile {
+  id: string
+  nickname: string | null
+  avatar_url: string | null
+  created_at: string
+}
+
+export interface MeetupRow {
+  id: string
+  title: string
+  description: string | null
+  max_participants: number
+  deadline: string
+  created_by: string
+  created_at: string
+}
+
+export interface ApplicationRow {
+  id: string
+  meetup_id: string
+  user_id: string
+  created_at: string
+}
 
 // ── Mock 유저 프로필 ────────────────────────────
 
