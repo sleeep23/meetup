@@ -1,5 +1,5 @@
 {
-  "buildCommand": "cd ../.. && yarn workspace @meetup/shared build",
+  "buildCommand": "cd ../.. && yarn workspace @meetup/shared build && yarn workspace @meetup/mock-api build",
   "installCommand": "cd ../.. && yarn install",
   "outputDirectory": "public",
   "rewrites": [
