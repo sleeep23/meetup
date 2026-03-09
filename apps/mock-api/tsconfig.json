@@ -5,8 +5,8 @@
     "outDir": "./dist",
     "noEmit": false,
     "paths": {
-      "@meetup/shared": ["../../packages/shared/dist"],
-      "@meetup/shared/*": ["../../packages/shared/dist/*"]
+      "@meetup/shared": ["../../packages/shared/src"],
+      "@meetup/shared/*": ["../../packages/shared/src/*"]
     }
   },
   "include": ["src/**/*"],
