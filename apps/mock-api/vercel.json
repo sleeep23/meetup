@@ -1,0 +1,7 @@
+{
+  "buildCommand": "cd ../.. && yarn workspace @meetup/shared build",
+  "installCommand": "cd ../.. && yarn install",
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/api/[[...route]]" }
+  ]
+}
