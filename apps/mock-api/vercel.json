@@ -1,5 +1,4 @@
 {
-  "buildCommand": "yarn workspace @meetup/mock-api build",
   "installCommand": "yarn install",
   "outputDirectory": "public",
   "rewrites": [
