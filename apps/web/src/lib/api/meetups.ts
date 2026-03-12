@@ -1,6 +1,6 @@
 import { supabase } from '../supabase'
-import type { Meetup, MeetupRow } from '@meetup/shared'
-import type { CreateMeetupInput } from '@meetup/shared'
+import type { Meetup, MeetupRow } from '@/lib/types/meetup'
+import type { CreateMeetupInput } from '@/lib/schemas/meetup'
 
 // ── 모임 목록 조회 ────────────────────────────
 
@@ -97,15 +97,25 @@ export async function createMeetup(
   } = await supabase.auth.getUser()
   if (!user) throw new Error('로그인이 필요합니다')
 
+  const insertData: Record<string, unknown> = {
+    title: input.title,
+    description: input.description ?? null,
+    max_participants: input.maxParticipants,
+    deadline: input.deadline,
+    created_by: user.id,
+  }
+
+  // 장소 정보가 있으면 추가
+  if (input.location) {
+    insertData.location_name = input.location.name
+    insertData.location_address = input.location.address ?? null
+    insertData.location_latitude = input.location.latitude
+    insertData.location_longitude = input.location.longitude
+  }
+
   const { data, error } = await supabase
     .from('meetup')
-    .insert({
-      title: input.title,
-      description: input.description ?? null,
-      max_participants: input.maxParticipants,
-      deadline: input.deadline,
-      created_by: user.id,
-    })
+    .insert(insertData)
     .select()
     .single()
 
@@ -186,6 +196,10 @@ function normalizeMeetup(row: any): Meetup {
     deadline: row.deadline,
     created_by: row.created_by,
     created_at: row.created_at,
+    location_name: row.location_name ?? null,
+    location_address: row.location_address ?? null,
+    location_latitude: row.location_latitude ?? null,
+    location_longitude: row.location_longitude ?? null,
     application_count: applicationCount,
     creator_profile: creatorProfile,
   }

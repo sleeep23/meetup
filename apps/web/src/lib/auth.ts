@@ -2,7 +2,7 @@ import { supabase } from './supabase'
 import { isDevAuthBypass, DEV_USER } from './dev'
 import { redirect } from '@tanstack/react-router'
 import type { Session, User } from '@supabase/supabase-js'
-import type { Profile } from '@meetup/shared'
+import type { Profile } from '@/lib/types/user'
 
 /** 현재 Supabase 세션을 가져온다 */
 export async function getSession(): Promise<Session | null> {

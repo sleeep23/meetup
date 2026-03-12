@@ -1,4 +1,4 @@
-import { Users, Clock } from 'lucide-react'
+import { Users, Clock, MapPin } from 'lucide-react'
 import { Card, CardContent } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
@@ -8,7 +8,8 @@ import {
   getStatusBadgeProps,
   formatTimeLeft,
 } from '@/lib/meetup-utils'
-import type { Meetup } from '@meetup/shared'
+import { hasLocation } from '@/lib/types/meetup'
+import type { Meetup } from '@/lib/types/meetup'
 
 interface MeetupCardProps {
   meetup: Meetup
@@ -91,6 +92,14 @@ export function MeetupCard({ meetup }: MeetupCardProps) {
             />
           </div>
         </div>
+
+        {/* Location */}
+        {hasLocation(meetup) && (
+          <div className="flex items-center gap-1.5 text-xs text-muted-foreground">
+            <MapPin className="size-3" />
+            <span className="truncate">{meetup.location_name}</span>
+          </div>
+        )}
 
         {/* Creator */}
         {meetup.creator_profile && (

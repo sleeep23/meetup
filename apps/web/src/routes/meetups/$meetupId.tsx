@@ -1,10 +1,11 @@
 import { createFileRoute, Link, useNavigate } from '@tanstack/react-router'
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
-import { Users, Clock, Calendar, ArrowLeft } from 'lucide-react'
+import { Users, Clock, Calendar, ArrowLeft, MapPin } from 'lucide-react'
 import { toast } from 'sonner'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
+import { KakaoMap } from '@/components/ui/map'
 import { MeetupDetailSkeleton } from '@/components/features/meetup/meetup-detail-skeleton'
 import { fetchMeetup } from '@/lib/api/meetups'
 import {
@@ -19,6 +20,7 @@ import {
   getStatusBadgeProps,
   formatTimeLeft,
 } from '@/lib/meetup-utils'
+import { extractLocation } from '@/lib/types/meetup'
 
 export const Route = createFileRoute('/meetups/$meetupId')({
   component: MeetupDetailPage,
@@ -103,6 +105,8 @@ function MeetupDetailPage() {
     (meetup.application_count / meetup.max_participants) * 100,
     100,
   )
+
+  const location = meetup ? extractLocation(meetup) : null
 
   const handleApplyClick = () => {
     if (authStatus !== 'authenticated') {
@@ -234,6 +238,34 @@ function MeetupDetailPage() {
           </p>
         </div>
       </div>
+
+      {/* Location Section */}
+      {location && (
+        <div className="mt-6 space-y-3">
+          <div className="flex items-center gap-2 text-sm text-muted-foreground">
+            <MapPin className="size-4" />
+            <h2 className="font-medium">모임 장소</h2>
+          </div>
+
+          {/* Location Info Card */}
+          <div className="rounded-lg border border-border bg-card p-4">
+            <p className="font-medium text-foreground">{location.name}</p>
+            {location.address && (
+              <p className="text-sm text-muted-foreground mt-1">{location.address}</p>
+            )}
+          </div>
+
+          {/* Map */}
+          <KakaoMap
+            location={location}
+            className="w-full h-60 sm:h-80"
+            level={3}
+            showMarker={true}
+            draggable={true}
+            zoomable={true}
+          />
+        </div>
+      )}
 
       {/* Description */}
       <div className="mt-6 rounded-xl bg-muted/50 p-5">

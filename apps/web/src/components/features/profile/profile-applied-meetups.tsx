@@ -3,7 +3,7 @@ import { Users, Calendar, ChevronRight, Beer } from 'lucide-react'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { getMeetupStatus, getStatusBadgeProps } from '@/lib/meetup-utils'
-import type { Meetup } from '@meetup/shared'
+import type { Meetup } from '@/lib/types/meetup'
 
 interface ProfileAppliedMeetupsProps {
   meetups: Meetup[]

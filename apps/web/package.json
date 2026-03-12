@@ -9,7 +9,6 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@meetup/shared": "*",
     "@supabase/supabase-js": "^2.49.0",
     "@tanstack/react-query": "^5.75.0",
     "@tanstack/react-router": "^1.120.0",

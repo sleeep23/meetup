@@ -13,8 +13,9 @@ import {
   DialogHeader,
   DialogTitle,
 } from '@/components/ui/dialog'
+import { LocationPicker, type LocationPickerValue } from '@/components/ui/map'
 import { createMeetup } from '@/lib/api/meetups'
-import { createMeetupSchema } from '@meetup/shared'
+import { createMeetupSchema } from '@/lib/schemas/meetup'
 
 interface CreateMeetupDialogProps {
   open: boolean
@@ -30,6 +31,7 @@ export function CreateMeetupDialog({
   const [description, setDescription] = useState('')
   const [maxParticipants, setMaxParticipants] = useState(4)
   const [deadline, setDeadline] = useState('')
+  const [location, setLocation] = useState<LocationPickerValue | null>(null)
   const [validationError, setValidationError] = useState<string | null>(null)
 
   const mutation = useMutation({
@@ -47,6 +49,7 @@ export function CreateMeetupDialog({
     setDescription('')
     setMaxParticipants(4)
     setDeadline('')
+    setLocation(null)
     setValidationError(null)
   }
 
@@ -60,6 +63,7 @@ export function CreateMeetupDialog({
       description: description.trim() || undefined,
       maxParticipants,
       deadline: deadline ? new Date(deadline).toISOString() : '',
+      location: location || undefined,
     })
 
     if (!result.success) {
@@ -79,7 +83,7 @@ export function CreateMeetupDialog({
         onOpenChange(v)
       }}
     >
-      <DialogContent className="sm:max-w-md">
+      <DialogContent className="sm:max-w-md max-h-[90vh] overflow-y-auto">
         <DialogHeader>
           <DialogTitle>새 모임 만들기</DialogTitle>
           <DialogDescription>모임 정보를 입력해주세요</DialogDescription>
@@ -108,6 +112,10 @@ export function CreateMeetupDialog({
               className="resize-none"
             />
           </div>
+
+          {/* 장소 선택 */}
+          <LocationPicker value={location} onChange={setLocation} />
+
           <div className="grid grid-cols-2 gap-4">
             <div className="space-y-2">
               <Label htmlFor="maxParticipants">최대 인원</Label>

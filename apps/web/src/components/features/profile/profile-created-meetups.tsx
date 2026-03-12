@@ -17,7 +17,7 @@ import {
 } from '@/components/ui/dialog'
 import { updateMeetup, deleteMeetup } from '@/lib/api/meetups'
 import { getMeetupStatus, getStatusBadgeProps } from '@/lib/meetup-utils'
-import type { Meetup } from '@meetup/shared'
+import type { Meetup } from '@/lib/types/meetup'
 
 interface ProfileCreatedMeetupsProps {
   meetups: Meetup[]

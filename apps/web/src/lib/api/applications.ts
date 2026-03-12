@@ -1,5 +1,5 @@
 import { supabase } from '../supabase'
-import type { ApplicationRow } from '@meetup/shared'
+import type { ApplicationRow } from '@/lib/types/meetup'
 
 // ── 신청 여부 확인 ────────────────────────────
 

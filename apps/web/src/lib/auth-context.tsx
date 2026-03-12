@@ -10,7 +10,7 @@ import { supabase } from './supabase'
 import { isDevAuthBypass, DEV_USER } from './dev'
 import { getProfile, ensureProfile } from './auth'
 import type { User } from '@supabase/supabase-js'
-import type { Profile } from '@meetup/shared'
+import type { Profile } from '@/lib/types/user'
 
 // ── 상태 타입 ──────────────────────────────────────────
 

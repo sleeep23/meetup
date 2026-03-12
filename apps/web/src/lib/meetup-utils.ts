@@ -1,4 +1,4 @@
-import type { Meetup } from '@meetup/shared'
+import type { Meetup } from '@/lib/types/meetup'
 
 export type MeetupStatus = 'open' | 'urgent' | 'full' | 'expired'
 
