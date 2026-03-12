@@ -7,6 +7,7 @@ import { Badge } from '@/components/ui/badge'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { KakaoMap } from '@/components/ui/map'
 import { MeetupDetailSkeleton } from '@/components/features/meetup/meetup-detail-skeleton'
+import { ChatRoom } from '@/components/features/chat/chat-room'
 import { fetchMeetup } from '@/lib/api/meetups'
 import {
   applyToMeetup,
@@ -276,6 +277,11 @@ function MeetupDetailPage() {
           {meetup.description || '아직 설명이 없어요.'}
         </p>
       </div>
+
+      {/* Chat Room -- 참여자에게만 표시 */}
+      {authStatus === 'authenticated' && (isOwner || hasApplied) && (
+        <ChatRoom meetupId={meetupId} />
+      )}
 
       {/* Desktop CTA */}
       <div className="hidden sm:block mt-8">

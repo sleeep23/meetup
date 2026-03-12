@@ -9,9 +9,8 @@
     "dev": "yarn workspace @meetup/web dev",
     "dev:mock": "yarn workspace @meetup/mock-api dev",
     "build:mock": "yarn workspace @meetup/mock-api build",
-    "build:shared": "yarn workspace @meetup/shared build",
     "build:web": "yarn workspace @meetup/web build",
-    "build": "yarn build:shared && yarn build:web",
+    "build": "yarn build:web",
     "lint": "eslint . --ext .ts,.tsx",
     "format": "prettier --write \"**/*.{ts,tsx,json,css,md}\""
   },
